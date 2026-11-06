@@ -1,0 +1,26 @@
+name: Next JS Build with Caches & Artifacts
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: uses: actions/checkout@v6.1.0
+
+      - name: Setup Node JS
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 22.x
+          caches: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Next JS App
+        run: npm run build
+        
+        
